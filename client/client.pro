@@ -1,12 +1,13 @@
-QT += widgets core gui network xml remoteobjects
+QT += widgets core gui network xml remoteobjects quick
 
 TARGET = AmneziaVPN
 TEMPLATE = app
 #CONFIG += console
+CONFIG += c++17
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-include("3rd/QtSsh/src/ssh/ssh.pri")
+include("3rd/QtSsh/src/ssh/qssh.pri")
 include("3rd/QtSsh/src/botan/botan.pri")
 include("3rd/SingleApplication/singleapplication.pri")
 include("3rd/QRCodeGenerator/QRCodeGenerator.pri")
@@ -35,6 +36,7 @@ HEADERS  += \
     settings.h \
     ui/Controls/SlidingStackedWidget.h \
     ui/mainwindow.h \
+    ui/uilogic.h \
    ui/qautostart.h \
    ui/server_widget.h \
    ui/sites_model.h \
@@ -65,6 +67,7 @@ SOURCES  += \
     settings.cpp \
     ui/Controls/SlidingStackedWidget.cpp \
     ui/mainwindow.cpp \
+    ui/uilogic.cpp \
    ui/qautostart.cpp \
    ui/server_widget.cpp \
    ui/sites_model.cpp \
@@ -114,7 +117,6 @@ win32 {
         -liphlpapi \
         -lgdi32
 
-    #LIBS += -L$$PWD/../../../../../../../OpenSSL-Win32/lib/ -llibcrypto
 }
 
 macx {
